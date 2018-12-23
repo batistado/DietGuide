@@ -1,0 +1,27 @@
+package com.model.bean;
+
+import java.beans.JavaBean;
+import java.util.List;
+
+@JavaBean
+public class FoodOptions {
+
+	private List<String> foodAllergies;
+	private List<String> foodCategories;
+
+	public List<String> getFoodAllergies() {
+		return foodAllergies;
+	}
+
+	public void setFoodAllergies(List<String> foodAllergies) {
+		this.foodAllergies = foodAllergies;
+	}
+
+	public List<String> getFoodCategories() {
+		return foodCategories;
+	}
+
+	public void setFoodCategories(List<String> foodCategories) {
+		this.foodCategories = foodCategories;
+	}
+}

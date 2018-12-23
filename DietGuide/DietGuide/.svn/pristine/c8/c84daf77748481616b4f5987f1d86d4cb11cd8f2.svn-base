@@ -1,0 +1,55 @@
+package com.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
+import com.model.ProductRanking;
+import com.model.bean.ProductInfo;
+
+public class GetRecommendations extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.doGet(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		Map<String,String[]> params = request.getParameterMap();
+		System.out.println(params);
+		List<ProductInfo> list = ProductRanking.getInstance().getList("Kosher");
+		PrintWriter writer = response.getWriter();
+
+		List recommendations = new ArrayList<>();
+		
+		List recommendation = new ArrayList();
+		for (ProductInfo productInfo : list) {
+			productInfo.setProductName("testname");
+			productInfo.setImageUrl("https://wegmans.com/content/dam/wegmans/products/196/196.jpg");
+			recommendation.add(productInfo);
+		}
+		
+		recommendations.add(recommendation);
+		recommendations.add(recommendation);
+		
+		response.setContentType("json");
+		Gson g =  new Gson();
+		String r = g.toJson(recommendation);
+		System.out.println(r);
+		writer.append(r);
+		writer.flush();
+		
+	}
+
+}

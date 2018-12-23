@@ -1,0 +1,15 @@
+package com.controller;
+
+public class Keys {
+
+	public static final String FOOD_ALLERGY = "allergies";
+	public static final String FOOD_CATEGORY = "categories";
+	public static final String BASE_URL = "https://api.wegmans.io/";
+
+	public static final String WENGMEN_API_KEY = "&Subscription-Key=6ce1a4c3915e46b8bb28dbcd762b561c";
+	public static final String API_VERSION = "?api-version=2018-10-18";
+	
+	public static final String PRODUCT_URL = BASE_URL + "products/%s" + API_VERSION + WENGMEN_API_KEY;
+	public static final String PRODUCT_PRICE_URL = BASE_URL + "products/%s/prices" + API_VERSION + WENGMEN_API_KEY;
+	public static final String CATEGORY_URL = BASE_URL + "products/categories/%s" + API_VERSION + WENGMEN_API_KEY;
+}
